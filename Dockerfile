@@ -8,7 +8,7 @@ LABEL Maintainer="myoung.me17"
 # i have chosen /usr/app/src
 WORKDIR /usr/src/app
 
-ENV MANUAL_LIST
+ENV MANUAL_LIST=false
 
 RUN mkdir -p /data /config
 RUN touch /usr/src/app/scraper.log
@@ -42,4 +42,4 @@ RUN pip install --upgrade cython \
 
 #CMD python3 -u '/config/hh.py'; mysql -h ${MYSQL_HOST} -u${MYSQL_USER} -p${MYSQL_PASSWORD} ygo < '/config/YGOSQL/YGOinsertTable.sql'
 
-CMD /config/countyscrape.sh >/usr/src/app/scraper.log 2>&1
+CMD /config/countyscrape.sh $MANUAL_LIST >/usr/src/app/scraper.log 2>&1
