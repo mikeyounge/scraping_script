@@ -8,7 +8,7 @@ networks:
 
 services:
   scraping-script:
-    image: scraping-script:latest
+    image: mikeyounge/scraping-script:latest
     container_name: scraping-script
     user: 1000:1000
     volumes:
