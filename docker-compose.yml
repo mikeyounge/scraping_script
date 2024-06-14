@@ -1,0 +1,22 @@
+---
+version: "3"
+
+networks:
+  default:
+    external: true
+    name: ygodb
+
+services:
+  scraping-script:
+    image: scraping-script:latest
+    container_name: scraping-script
+    user: 1000:1000
+    volumes:
+      - /mnt/data1/ygo/MarketScrapes:/data
+      - /mnt/data1/ygo:/config
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_USER=ygo
+      - MYSQL_PASSWORD=lrbmey8325
+      - MYSQL_DB=ygo
+      - MANUAL_LIST=false #set to true to allow for updating countylist.json manually. False will download the list for existing data every pass
